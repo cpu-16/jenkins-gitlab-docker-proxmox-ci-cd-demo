@@ -37,7 +37,7 @@
 
 ## 🎥 Demo CI/CD
 
-![Demo CI/CD](docs/images/demo2.gif)
+![Demo CI/CD](images/demo2.gif)
 
 En este video se muestra:
 
