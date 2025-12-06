@@ -46,8 +46,6 @@ En este video se muestra:
 3. Se construye la imagen Docker y se publica en Docker Hub.
 4. La app Node.js se redepliega en `http://APP_VM:3000`.
 
-![Diagrama de topología](docs/images/01-topologia.png)
-
 ---
 
 ## 🏗 Decisiones de Arquitectura
@@ -105,6 +103,10 @@ No es obligatorio, pero ayuda para:
 
 **GitLab.com**
 - Repo `Gitlab_Jenkins_collab` (tu fork)
+  
+```bash
+git clone https://gitlab.com/cpu-161/Gitlab_Jenkins_collab.git
+```
 
 **Docker Hub**
 - Repositorio `TU_USUARIO/cicd-demo-app`
