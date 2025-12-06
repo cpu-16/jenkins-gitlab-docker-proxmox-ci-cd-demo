@@ -105,7 +105,7 @@ No es obligatorio, pero ayuda para:
 - Repo `Gitlab_Jenkins_collab` (tu fork)
   
 ```bash
-git clone https://gitlab.com/cpu-161/Gitlab_Jenkins_collab.git
+https://gitlab.com/cpu-161/Gitlab_Jenkins_collab.git
 ```
 
 **Docker Hub**
