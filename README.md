@@ -81,8 +81,6 @@ No es obligatorio, pero ayuda para:
 - **GitLab** → repo con código, Dockerfile y Jenkinsfile
 - **Docker Hub** → registro donde Jenkins publicará la imagen
 
-![Pantallas de login GitLab y Docker Hub](docs/images/02-cuentas.png)
-
 ---
 
 ## 🗺 Topología que estamos montando
@@ -110,8 +108,6 @@ No es obligatorio, pero ayuda para:
 
 **Docker Hub**
 - Repositorio `TU_USUARIO/cicd-demo-app`
-
-![Panel de Proxmox con las VMs](docs/images/03-proxmox-vms.png)
 
 ---
 
@@ -169,7 +165,7 @@ Lo que hiciste para estabilizarlo fue:
 
 > A partir de aquí Jenkins usará tu fork, no el repo original.
 
-![Repositorio en GitLab con archivos](docs/images/05-gitlab-repo.png)
+![Repositorio en GitLab con archivos](images/gitlab.png)
 
 ---
 
@@ -187,7 +183,7 @@ java -version
 
 > Las versiones recientes de Jenkins soportan Java 17 y 21 en Debian/Ubuntu.
 
-![Salida de java -version](docs/images/06-java-version.png)
+![Salida de java -version](images/java.png)
 
 ### 3.2. Instalar Jenkins desde el repo oficial
 
@@ -221,7 +217,7 @@ En tu navegador:
 http://172.25.205.50:8080
 ```
 
-![Pantalla de desbloqueo de Jenkins](docs/images/07-jenkins-unlock.png)
+![Pantalla de desbloqueo de Jenkins](images/jenkins.png)
 
 ### 3.3. Desbloquear Jenkins
 
@@ -399,7 +395,7 @@ En Jenkins:
 
 Guarda y revisa el log hasta ver el nodo conectado (icono con monitor y ✔️).
 
-![Página de Nodes con master y app-server](docs/images/11-jenkins-nodes.png)
+![Página de Nodes con master y app-server](images/nodes.png)
 
 ---
 
@@ -425,7 +421,7 @@ En cada monitor:
 
 Guarda cambios.
 
-![Configuración de Node Monitors](docs/images/12-node-monitors.png)
+![Configuración de Node Monitors](images/monitors.png)
 
 ---
 
@@ -443,7 +439,7 @@ code .
 
 Desde aquí podrás editar `app.js`, `Jenkinsfile`, etc., hacer commit y push.
 
-![VS Code con el proyecto abierto](docs/images/13-vscode.png)
+![VS Code con el proyecto abierto](images/vscode.png)
 
 ---
 
@@ -460,7 +456,7 @@ En GitLab:
 
 > 💡 Los Personal Access Tokens permiten acceso al repositorio vía HTTPS con scopes como `read_repository`.
 
-![Creación de Personal Access Token](docs/images/14-gitlab-token.png)
+![Creación de Personal Access Token](images/token.png)
 
 ---
 
@@ -661,7 +657,7 @@ Si todo está bien:
 Como en este laboratorio nuestro Jenkins está dentro de la red local de Proxmox (IP privada 172.25.205.50) y no tenemos IP pública ni túnel HTTPS hacia Internet, GitLab no puede enviarle webhooks directamente. Para no perder la automatización, configuramos en el job de Jenkins la opción “Consultar repositorio (SCM)” con una expresión cron (por ejemplo H/5 * * * * o H/10 * * * *).
 Con esto, Jenkins pregunta periódicamente a GitLab si hay cambios en la rama main y, solo cuando detecta nuevos commits, dispara el pipeline (build de la imagen Docker, push a Docker Hub y redeploy en app-server). Esta solución introduce un pequeño retraso (hasta 5–10 minutos según el intervalo configurado) y genera algo de tráfico extra, pero es una buena alternativa temporal cuando aún no se dispone de una URL pública/túnel para usar webhooks GitLab → Jenkins.
 
-![Webhook en GitLab con delivery 200 OK](docs/images/19-gitlab-webhook.png)
+![Alternativa con SCM](images/scm.png)
 
 ---
 
